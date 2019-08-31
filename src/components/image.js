@@ -28,6 +28,20 @@ const Image = () => {
           }
         }
       }
+      headerCatalogPage: file(relativePath: { eq: "header-catalog.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 2140) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      bottomCatalogPage: file(relativePath: { eq: "bottom-catalog.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 2140) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
     }
   `)
 }
