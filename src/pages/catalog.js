@@ -103,6 +103,7 @@ const WrapperGallery = styled.div`
     }
   }
 `
+
 const SecondPage = () => {
   const { headerCatalogPage, square } = getImage()
   return (
