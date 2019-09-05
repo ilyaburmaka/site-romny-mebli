@@ -77,6 +77,13 @@ const Image = () => {
           }
         }
       }
+      dorSelect: file(relativePath: { eq: "dor-select.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
     }
   `)
 }

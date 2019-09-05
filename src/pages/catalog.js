@@ -8,7 +8,6 @@ import styled from "styled-components"
 import { MEDIA } from "../../themes/media"
 import getImage from "../components/image"
 import FilterImage from "../images/bottom-catalog.png"
-import background from "../images/footer.png"
 import colors from "../../themes"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
@@ -57,6 +56,9 @@ const Wrapper = styled.div`
   background-image: url(${FilterImage});
   background-repeat: no-repeat;
   background-position: bottom;
+  @media (${MEDIA.SM}) {
+    height: 600px;
+  }
 `
 const Content = styled.div`
   padding-top: 50px;
@@ -110,13 +112,20 @@ const FilterWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding-top: 33px;
+  @media (${MEDIA.SM}) {
+    flex-direction: column;
+    align-items: center;
+  }
 `
 const FilterLeftSide = styled.div`
   margin-left: 60px;
 `
-const TitleFilter = styled.span`
+const TitleFilter = styled.div`
   font-size: 22px;
   font-family: Roboto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: #eee4dd;
 `
 const Line = styled.div`
@@ -126,14 +135,17 @@ const Line = styled.div`
 `
 const FilterImages = styled.div`
   margin-right: 35px;
-  margin-top: 32px;
-  height: 80px;
+  margin-top: 30px;
+  cursor: pointer;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   width: 80px;
   .gatsby-image-wrapper {
     height: 80px;
     width: 80px;
     img {
-    
       height: 80px;
       width: 80px;
     }
@@ -142,9 +154,60 @@ const FilterImages = styled.div`
 const WrapperFilterImages = styled.div`
   display: flex;
 `
+const FilterTitle = styled.span`
+  text-transform: uppercase;
+  font-family: Roboto;
+  word-break: keep-all;
+  font-size: 16px;
+  margin-top: 8px;
+  color: ${colors.white};
+`
 const FilterRightSide = styled.div``
+const LineSelectFilter = styled.div`
+  width: 100%;
+  height: 4px;
+  background-color: #9d3001;
+`
+const TitleMainFilter = styled.div`
+  font-size: 12px;
+  color: #8e2906;
+  font-family: Roboto;
+  margin-top: 9px;
+  margin-left: 2px;
+  margin-bottom: 84px;
+`
+const FilterSelectImages = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  .gatsby-image-wrapper {
+    height: 68px;
+    width: 68px;
+    img {
+      height: 68px;
+      width: 68px;
+    }
+  }
+`
+const FilterSelectTitle = styled.div`
+  text-transform: uppercase;
+  font-family: Roboto;
+  word-break: keep-all;
+  font-size: 16px;
+  color: #8e2906;
+`
 const SecondPage = () => {
-  const { headerCatalogPage, square, filterDor, filterBed,filterBoxer,filterDrarbina,filterLed } = getImage()
+  const {
+    headerCatalogPage,
+    square,
+    filterDor,
+    filterBed,
+    filterBoxer,
+    filterDrarbina,
+    filterLed,
+    dorSelect,
+  } = getImage()
   return (
     <Layout>
       <SEO title="catalog" />
@@ -156,35 +219,48 @@ const SecondPage = () => {
       <Wrapper>
         <FilterWrapper>
           <FilterLeftSide>
-            <TitleFilter>СТАНДАРТНІ ВИРОБИ</TitleFilter>
+            <TitleFilter>
+              <div>СТАНДАРТНІ</div>
+              <div>ВИРОБИ</div>
+            </TitleFilter>
             <Line />
             <WrapperFilterImages>
               <FilterImages>
                 <Img fluid={filterDor.childImageSharp.fluid} />
+                <FilterTitle>двері</FilterTitle>
               </FilterImages>
               <FilterImages>
                 <Img fluid={filterBed.childImageSharp.fluid} />
+                <FilterTitle>ліжка</FilterTitle>
               </FilterImages>
               <FilterImages>
                 <Img fluid={filterBoxer.childImageSharp.fluid} />
+                <FilterTitle> меблі</FilterTitle>
               </FilterImages>
             </WrapperFilterImages>
           </FilterLeftSide>
           <FilterRightSide>
-            <TitleFilter>НЕСТАНДАРТНІ ВИРОБИ</TitleFilter>
+            <TitleFilter>
+              <div>НЕСТАНДАРТНІ</div>
+              <div>ВИРОБИ</div>
+            </TitleFilter>
             <Line size={434} />
             <WrapperFilterImages>
               <FilterImages>
                 <Img fluid={filterDor.childImageSharp.fluid} />
+                <FilterTitle>двері</FilterTitle>
               </FilterImages>
               <FilterImages>
                 <Img fluid={filterBed.childImageSharp.fluid} />
+                <FilterTitle>ліжка</FilterTitle>
               </FilterImages>
               <FilterImages>
                 <Img fluid={filterLed.childImageSharp.fluid} />
+                <FilterTitle>кухні</FilterTitle>
               </FilterImages>
               <FilterImages>
                 <Img fluid={filterDrarbina.childImageSharp.fluid} />
+                <FilterTitle>ексклюзив</FilterTitle>
               </FilterImages>
             </WrapperFilterImages>
           </FilterRightSide>
@@ -196,9 +272,15 @@ const SecondPage = () => {
             <WrapperGallery>
               <Row>
                 <Col lg={3} md={6} sm={6}>
-                  <ImageExampleProd>
-                    <Img fluid={square.childImageSharp.fluid} />
-                  </ImageExampleProd>
+                  <LineSelectFilter />
+                  <TitleMainFilter>
+                    СТАНДАРТНІ <br />
+                    ВИРОБИ
+                  </TitleMainFilter>
+                  <FilterSelectImages>
+                    <Img fluid={dorSelect.childImageSharp.fluid} />
+                    <FilterSelectTitle>двері</FilterSelectTitle>
+                  </FilterSelectImages>
                 </Col>
                 <Col lg={3} md={6} sm={6}>
                   <ImageExampleProd>
