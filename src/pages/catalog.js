@@ -50,6 +50,8 @@ const BottomImage = styled.div`
   }
 `
 const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
   width: 100%;
   height: 280px;
   background-image: url(${FilterImage});
@@ -103,9 +105,46 @@ const WrapperGallery = styled.div`
     }
   }
 `
-
+const FilterWrapper = styled.div`
+  width: 920px;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 33px;
+`
+const FilterLeftSide = styled.div`
+  margin-left: 60px;
+`
+const TitleFilter = styled.span`
+  font-size: 22px;
+  font-family: Roboto;
+  color: #eee4dd;
+`
+const Line = styled.div`
+  height: 2px;
+  width: ${({ size }) => (!!size ? `${size}px` : "327px")};
+  background-color: #eee4dd;
+`
+const FilterImages = styled.div`
+  margin-right: 35px;
+  margin-top: 32px;
+  height: 80px;
+  width: 80px;
+  .gatsby-image-wrapper {
+    height: 80px;
+    width: 80px;
+    img {
+    
+      height: 80px;
+      width: 80px;
+    }
+  }
+`
+const WrapperFilterImages = styled.div`
+  display: flex;
+`
+const FilterRightSide = styled.div``
 const SecondPage = () => {
-  const { headerCatalogPage, square } = getImage()
+  const { headerCatalogPage, square, filterDor, filterBed,filterBoxer,filterDrarbina,filterLed } = getImage()
   return (
     <Layout>
       <SEO title="catalog" />
@@ -114,7 +153,43 @@ const SecondPage = () => {
           <Img fluid={headerCatalogPage.childImageSharp.fluid} />
         </EntityImage>
       </WrapperPicture>
-      <Wrapper>asdas</Wrapper>
+      <Wrapper>
+        <FilterWrapper>
+          <FilterLeftSide>
+            <TitleFilter>СТАНДАРТНІ ВИРОБИ</TitleFilter>
+            <Line />
+            <WrapperFilterImages>
+              <FilterImages>
+                <Img fluid={filterDor.childImageSharp.fluid} />
+              </FilterImages>
+              <FilterImages>
+                <Img fluid={filterBed.childImageSharp.fluid} />
+              </FilterImages>
+              <FilterImages>
+                <Img fluid={filterBoxer.childImageSharp.fluid} />
+              </FilterImages>
+            </WrapperFilterImages>
+          </FilterLeftSide>
+          <FilterRightSide>
+            <TitleFilter>НЕСТАНДАРТНІ ВИРОБИ</TitleFilter>
+            <Line size={434} />
+            <WrapperFilterImages>
+              <FilterImages>
+                <Img fluid={filterDor.childImageSharp.fluid} />
+              </FilterImages>
+              <FilterImages>
+                <Img fluid={filterBed.childImageSharp.fluid} />
+              </FilterImages>
+              <FilterImages>
+                <Img fluid={filterLed.childImageSharp.fluid} />
+              </FilterImages>
+              <FilterImages>
+                <Img fluid={filterDrarbina.childImageSharp.fluid} />
+              </FilterImages>
+            </WrapperFilterImages>
+          </FilterRightSide>
+        </FilterWrapper>
+      </Wrapper>
       <Content>
         <WrapperTopImage>
           <Container>

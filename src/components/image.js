@@ -42,6 +42,41 @@ const Image = () => {
           }
         }
       }
+      filterBed: file(relativePath: { eq: "filter-bed.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      filterBoxer: file(relativePath: { eq: "filter-boxerr.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      filterDor: file(relativePath: { eq: "filter-dor.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      filterDrarbina: file(relativePath: { eq: "filter-drabina.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      filterLed: file(relativePath: { eq: "filter-led.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
     }
   `)
 }
