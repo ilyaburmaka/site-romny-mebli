@@ -52,12 +52,13 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 280px;
+  min-height: 280px;
   background-image: url(${FilterImage});
   background-repeat: no-repeat;
   background-position: bottom;
   @media (${MEDIA.SM}) {
-    height: 600px;
+    min-height: 220px;
+    background-size: auto 100%;
   }
 `
 const Content = styled.div`
@@ -110,15 +111,24 @@ const WrapperGallery = styled.div`
 const FilterWrapper = styled.div`
   width: 920px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   padding-top: 33px;
   @media (${MEDIA.SM}) {
-    flex-direction: column;
-    align-items: center;
+    width: 100vw;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  @media (${MEDIA.XS}) {
+    display: flex;
+    justify-content: center;
   }
 `
 const FilterLeftSide = styled.div`
   margin-left: 60px;
+  @media (${MEDIA.SM}) {
+    margin-left: unset;
+  }
 `
 const TitleFilter = styled.div`
   font-size: 22px;
@@ -127,11 +137,17 @@ const TitleFilter = styled.div`
   flex-direction: column;
   align-items: center;
   color: #eee4dd;
+  @media (${MEDIA.SM}) {
+    font-size: 16px;
+  }
 `
 const Line = styled.div`
   height: 2px;
   width: ${({ size }) => (!!size ? `${size}px` : "327px")};
   background-color: #eee4dd;
+  @media (${MEDIA.SM}) {
+    width: ${({ sizeMobile }) => (!!sizeMobile ? `${sizeMobile}px` : "227px")};
+  }
 `
 const FilterImages = styled.div`
   margin-right: 35px;
@@ -150,9 +166,27 @@ const FilterImages = styled.div`
       width: 80px;
     }
   }
+  @media (${MEDIA.SM}) {
+    margin-right: 4px;
+    margin-top: 10px;
+    width: 60px;
+    height: 75px;
+    .gatsby-image-wrapper {
+      height: 50px;
+      width: 50px;
+      img {
+        height: 50px;
+        width: 50px;
+      }
+    }
+  }
 `
 const WrapperFilterImages = styled.div`
   display: flex;
+  @media (${MEDIA.SM}) {
+    width: ${({ width }) => width || "227px"};
+    justify-content: ${({ justify }) => justify || "center"};
+  }
 `
 const FilterTitle = styled.span`
   text-transform: uppercase;
@@ -161,8 +195,15 @@ const FilterTitle = styled.span`
   font-size: 16px;
   margin-top: 8px;
   color: ${colors.white};
+  @media (${MEDIA.SM}) {
+    font-size: 11px;
+    margin-top: 4px;
+  }
 `
-const FilterRightSide = styled.div``
+const FilterRightSide = styled.div`
+  @media (${MEDIA.SM}) {
+  }
+`
 const LineSelectFilter = styled.div`
   width: 100%;
   height: 4px;
@@ -235,7 +276,7 @@ const SecondPage = () => {
               </FilterImages>
               <FilterImages>
                 <Img fluid={filterBoxer.childImageSharp.fluid} />
-                <FilterTitle> меблі</FilterTitle>
+                <FilterTitle>меблі</FilterTitle>
               </FilterImages>
             </WrapperFilterImages>
           </FilterLeftSide>
@@ -244,8 +285,8 @@ const SecondPage = () => {
               <div>НЕСТАНДАРТНІ</div>
               <div>ВИРОБИ</div>
             </TitleFilter>
-            <Line size={434} />
-            <WrapperFilterImages>
+            <Line size={434} sizeMobile={284} />
+            <WrapperFilterImages justify={"space-evenly"} width={"285px"}>
               <FilterImages>
                 <Img fluid={filterDor.childImageSharp.fluid} />
                 <FilterTitle>двері</FilterTitle>
